@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@xzihnago/middleware",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -9,24 +9,29 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsc --noEmit && rimraf lib && tsup"
+    "build": "tsc --noEmit && rimraf lib && tsup",
+    "package:eslint": "eslint src",
+    "package:prettier": "prettier -c src/**/*.ts",
+    "package:bump-dependencies": "pnpm up -L"
   },
-  "dependencies": {
+  "peerDependencies": {
+    "bcrypt": "^5.1.1",
     "express": "^5.0.1",
     "jsonwebtoken": "^9.0.2",
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.0",
-    "@types/express-serve-static-core": "^5.0.2",
-    "@types/jsonwebtoken": "^9.0.7",
-    "@types/qs": "^6.9.17",
-    "eslint": "^9.15.0",
-    "eslint-config-prettier": "^9.1.0",
-    "prettier": "3.3.3",
+    "@types/express-serve-static-core": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.8",
+    "@types/qs": "^6.9.18",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
+    "prettier": "3.4.2",
     "rimraf": "^6.0.1",
-    "tsup": "^8.3.5",
-    "typescript": "^5.7.2",
-    "typescript-eslint": "^8.15.0"
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.23.0"
   }
 }
