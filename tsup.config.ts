@@ -2,7 +2,7 @@ import { defineConfig } from "tsup";
 
 export default defineConfig({
   format: "esm",
-  entry: ["src/**/*.ts"],
+  entry: ["src/**/*.ts", "!src/**/*.d.ts"],
   outDir: "lib",
   clean: true,
   minify: true,

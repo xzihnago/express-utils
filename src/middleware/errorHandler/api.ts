@@ -4,8 +4,13 @@ export const api: MiddlewareError = (error, _req, res, _next) => {
     res.status(500);
   }
 
-  if (JSON.stringify(error) === "{}" && error instanceof Error) {
-    res.json({ error: error.message });
+  if (error instanceof Error && JSON.stringify(error) === "{}") {
+    res.json({
+      error: {
+        name: error.name,
+        message: error.message,
+      },
+    });
   } else {
     res.json({ error });
   }
