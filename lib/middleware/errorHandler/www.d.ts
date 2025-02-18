@@ -1,5 +1,6 @@
 declare const www: MiddlewareError<[
-    redirect?: string | Record<number, string>
+    redirect?: string | Partial<Record<number, string>>,
+    messages?: string | Partial<Record<number, string>>
 ]>;
 
 export { www };
