@@ -9,7 +9,7 @@ export const hash = (
   const salt = crypto.randomBytes(16);
   const hash = crypto.createHmac(algorithm, salt).update(data);
 
-  return `${salt.toString(encoding)}.${hash.digest(encoding)}`;
+  return Buffer.concat([salt, hash.digest()]).toString(encoding);
 };
 
 export const verify = (
@@ -18,10 +18,9 @@ export const verify = (
   algorithm = "sha256",
   encoding: BinaryToTextEncoding = "base64"
 ) => {
-  const [salt, hash] = encrypted.split(".");
-  const hashData = crypto
-    .createHmac(algorithm, Buffer.from(salt, encoding))
-    .update(data);
+  const buffer = Buffer.from(encrypted, encoding);
+  const [salt, hash] = [buffer.subarray(0, 16), buffer.subarray(16)];
+  const hashData = crypto.createHmac(algorithm, salt).update(data);
 
-  return hash === hashData.digest(encoding);
+  return hash.toString(encoding) === hashData.digest(encoding);
 };
