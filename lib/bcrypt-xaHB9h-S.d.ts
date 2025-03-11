@@ -1,5 +1,5 @@
-declare const hash: (password: string) => Promise<string>;
-declare const verify: (password: string, hash: string) => Promise<boolean>;
+declare const hash: (data: string) => Promise<string>;
+declare const verify: (data: string, encrypted: string) => Promise<boolean>;
 
 declare const bcrypt_hash: typeof hash;
 declare const bcrypt_verify: typeof verify;
