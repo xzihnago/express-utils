@@ -1,17 +1,15 @@
 import jsonwebtoken from 'jsonwebtoken';
 
 declare const jwt: Middleware<[
+    raw: string,
     secret: jsonwebtoken.Secret | jsonwebtoken.PublicKey,
-    cookie?: string
+    options?: jsonwebtoken.VerifyOptions
 ]>;
-declare global {
-    namespace Express {
-        interface Request {
-            jwt: {
-                token: string;
-                decoded: string | jsonwebtoken.JwtPayload;
-            };
-        }
+declare module "express-serve-static-core" {
+    interface Request {
+        jwt?: jsonwebtoken.Jwt & {
+            raw: string;
+        };
     }
 }
 

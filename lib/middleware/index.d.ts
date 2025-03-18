@@ -1,4 +1,4 @@
-export { routeLog } from './routeLog.js';
+export { routeLogger } from './routeLogger.js';
 export { responseHandler } from './responseHandler.js';
 export { i as errorHandler } from '../index-D_L86mT5.js';
 export { i as authentication } from '../index-CTVeQFb_.js';
