@@ -6,11 +6,8 @@ export const responseHandler: Middleware = (_, res, next) => {
   next();
 };
 
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace Express {
-    interface Response {
-      ok: (data: unknown) => void;
-    }
+declare module "express-serve-static-core" {
+  interface Response {
+    ok: (data: unknown) => void;
   }
 }
