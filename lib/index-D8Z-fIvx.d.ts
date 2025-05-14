@@ -1,6 +1,6 @@
-import { joi } from './middleware/validateSchema/joi.js';
-import { superstruct } from './middleware/validateSchema/superstruct.js';
-import { zod } from './middleware/validateSchema/zod.js';
+import { joi } from './middleware/schemas/joi.js';
+import { superstruct } from './middleware/schemas/superstruct.js';
+import { zod } from './middleware/schemas/zod.js';
 
 declare const index_joi: typeof joi;
 declare const index_superstruct: typeof superstruct;
