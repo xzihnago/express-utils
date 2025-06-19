@@ -1,9 +1,16 @@
 import type { ObjectSchema } from "joi";
 
-export const joi: Middleware<[schema: ObjectSchema<unknown>]> =
-  (schema) => async (req, res, next) => {
+export const joi: Middleware<
+  [schema: ObjectSchema<unknown>, data?: "body" | "query"]
+> =
+  (schema, data = "body") =>
+  async (req, res, next) => {
     try {
-      req.body = await schema.validateAsync(req.body);
+      if (data === "body") {
+        req.body = await schema.validateAsync(req.body);
+      } else {
+        await schema.validateAsync(req.query);
+      }
     } catch (error) {
       res.status(422);
       throw error;
