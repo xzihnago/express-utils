@@ -21,10 +21,10 @@ const console = new transports.Console({
         colorize(info.timestamp, ANSI.FAINT),
         info.level,
         colorize(
-          `[${req.ip ?? req.socket.remoteAddress ?? "unknown"}]`,
+          `[${req.ip ?? req.socket.remoteAddress ?? "unknown"}]`.padEnd(18),
           ANSI.MAGENTA
         ),
-        colorize(req.method, ANSI.YELLOW),
+        colorize(req.method.padStart(7), ANSI.YELLOW),
         req.path,
       ].join(" ");
     })
@@ -39,8 +39,8 @@ const file = new transports.DailyRotateFile({
       return [
         info.timestamp,
         info.level,
-        `[${req.ip ?? req.socket.remoteAddress ?? "unknown"}]`,
-        req.method,
+        `[${req.ip ?? req.socket.remoteAddress ?? "unknown"}]`.padEnd(18),
+        req.method.padStart(7),
         req.path,
       ].join(" ");
     })
