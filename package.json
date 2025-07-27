@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@xzihnago/express-utils",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "files": [
     "package.json",
     "lib"
